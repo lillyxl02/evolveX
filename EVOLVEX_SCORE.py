@@ -6,8 +6,9 @@ import cplex
 #this script determines which fluxes can be exposed to positive selection using combinations of a limited set of most common nutrients
 def setBounds(cbmodel): #gjør grensene bredere
 	for rxn in cbmodel.reactions:
-		rxn.lower_bound = rxn.lower_bound * 10
 		rxn.upper_bound = rxn.upper_bound * 10
+		rxn.lower_bound = rxn.lower_bound * 10
+		
 
 
 def createSecretion(model, rxn): #lager en kunstig reaksjon for sekresjon av metabolitter. 

@@ -64,7 +64,7 @@ model_evolvex.reactions.get_by_id("EX_glc__D_e").lower_bound = 0
 condMap = {
     "carbon": [
         "EX_gal_e", 
-        "EX_fru_e", "EX_lac__D_e", "EX_ac_e", "EX_pyr_e", "EX_succ_e", "EX_gly_e", "EX_glyc_e"
+        "EX_fru_e", "EX_lac__D_e", "EX_ac_e", "EX_pyr_e", "EX_succ_e", "EX_gly_e", "EX_glyc_e", "EX_xyl__D_e"
     ],
     "nitrogen": ["EX_gln__L_e", "EX_glu__L_e",
         "EX_ala__L_e", "EX_ser__L_e",
