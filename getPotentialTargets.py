@@ -27,15 +27,16 @@ def getPotentialTargets(model, wtminmax, redVector, tol=1e-7):
         wt_lb = float(wtminmax[r, 0])
         wt_ub = float(wtminmax[r, 1])
 
-        #Sjekker om wt intervallet for reaksjonen er identisk med modellens bounds. Hvis ja, lite poeng å gi binærevariabler
-        #Hvis nei som man sjekker nedenfor, interessant som targets og derfor legges det til i binRxns. 
-        same_as_bounds = (
-            abs(wt_lb - lb[r]) < tol and
-            abs(wt_ub - ub[r]) < tol
-        )
+        if rxn.lower_bound < 0:
+            #reversible
+            if not (wt_lb == -1000 and wt_ub == 1000):
+                binRxns.append(r)
 
-        if not same_as_bounds:
-            binRxns.append(r)
+        else:
+            #irreversible
+            if not (wt_lb == 0 and wt_ub == 1000):
+                binRxns.append(r)
+
 
     return np.array(binRxns, dtype=int)
 
