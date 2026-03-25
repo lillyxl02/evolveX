@@ -30,7 +30,7 @@ def determine_trait_flux_basis(model, osense, wtminmax, alpha, delta, eps, noSol
             fullSol.append(solutionA[cfullSol]["full"]) #[alle fluxer v] + [alle binære y]
             limit += 1
         else:
-            print("Ingen 'full' i solution")
+            print("Ingen fullsol")
         ultimate_limit -= 1
         if ultimate_limit == 0:
             limit = noSols
@@ -38,7 +38,7 @@ def determine_trait_flux_basis(model, osense, wtminmax, alpha, delta, eps, noSol
 
     if binSol:
         binSolp, fullSolp, dirThresp, solutionp = prune_flux_basis_solutions(wtminmax, np.column_stack(binSol), np.column_stack(fullSol), binRxns, delta, eps, solutionA)
-        binSolp = np.round(binSolp)#??
+        binSolp = np.round(binSolp)
         indeces = get_alternative_flux_bases(binSolp, False) #True (1) betyr at alle løsninger tillates. 0 hvis man kun vil ha de med minste antall targets. 
         #indeces er en liste for hvilke kolonner i binsolp som beholdes. 
         if indeces:
