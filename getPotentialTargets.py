@@ -14,6 +14,7 @@ def getPotentialTargets(model, wtminmax, redVector, tol=1e-7):
     for rxn in model.reactions:  
         if rxn.id.startswith("EX_"):
             redVector[model.reactions.index(rxn)] = 0
+
     #Hent bounds fra modellen
     lb = np.array([r.lower_bound for r in model.reactions], dtype=float)
     ub = np.array([r.upper_bound for r in model.reactions], dtype=float)
@@ -27,7 +28,7 @@ def getPotentialTargets(model, wtminmax, redVector, tol=1e-7):
         wt_lb = float(wtminmax[r, 0])
         wt_ub = float(wtminmax[r, 1])
 
-        if rxn.lower_bound < 0:
+        if lb[r] < tol:
             #reversible
             if not (wt_lb == -1000 and wt_ub == 1000):
                 binRxns.append(r)
