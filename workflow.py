@@ -35,7 +35,7 @@ trait.upper_bound=1000
 trait.objective_coefficient = 1 #setter ønsket reaksjon som objektivfunksjon
 
 
-#4.LB medium
+#4.Pro env
 lb_open = ["EX_ala__L_e","EX_glu__L_e","EX_gln__L_e","EX_asp__L_e","EX_ser__L_e","EX_gly_e","EX_leu__L_e","EX_lys__L_e", "EX_thm_e", "EX_btn_e"]
 for e in lb_open:
     if e in trait_model.reactions:
@@ -62,14 +62,8 @@ model_evolvex.reactions.get_by_id("EX_glc__D_e").lower_bound = 0
 
 #8.lager kombinasjoner som støtter vekst med alternative kilder
 condMap = {
-    "carbon": [
-        "EX_gal_e", 
-        "EX_fru_e", "EX_lac__D_e", "EX_ac_e", "EX_pyr_e", "EX_succ_e", "EX_gly_e", "EX_glyc_e", "EX_xyl__D_e"
-    ],
-    "nitrogen": ["EX_gln__L_e", "EX_glu__L_e",
-        "EX_ala__L_e", "EX_ser__L_e",
-        "EX_arg__L_e", "EX_nh4_e"
-    ]
+    "carbon":  ["EX_gal_e", "EX_fru_e", "EX_ac_e", "EX_pyr_e", "EX_succ_e", "EX_glyc_e", "EX_xyl__D_e"],
+    "nitrogen": ["EX_gln__L_e", "EX_glu__L_e","EX_ala__L_e", "EX_ser__L_e", "EX_nh4_e"]
 }
 growth, uptakes, combos = get_growth_supporting_niche12(model_evolvex, condMap)
 
